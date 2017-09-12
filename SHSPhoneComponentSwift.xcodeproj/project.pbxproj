@@ -29,6 +29,9 @@
 		39D869811F67C0160038CB49 /* SHSPhoneComponentSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSPhoneComponentSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D869861F67C0160038CB49 /* SHSPhoneComponentSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSPhoneComponentSwiftTests.swift; sourceTree = "<group>"; };
 		39D869881F67C0160038CB49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39D869941F67C26C0038CB49 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		39D869951F67C26C0038CB49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		39D869961F67C26C0038CB49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 				39D8697A1F67C0160038CB49 /* SHSPhoneComponentSwift */,
 				39D869851F67C0160038CB49 /* SHSPhoneComponentSwiftTests */,
 				39D869791F67C0160038CB49 /* Products */,
+				39D869931F67C26C0038CB49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +88,16 @@
 				39D869881F67C0160038CB49 /* Info.plist */,
 			);
 			path = SHSPhoneComponentSwiftTests;
+			sourceTree = "<group>";
+		};
+		39D869931F67C26C0038CB49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39D869941F67C26C0038CB49 /* CoreGraphics.framework */,
+				39D869951F67C26C0038CB49 /* Foundation.framework */,
+				39D869961F67C26C0038CB49 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +343,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SHSPhoneComponentSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.SHSPhoneComponentSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -347,6 +362,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SHSPhoneComponentSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.SHSPhoneComponentSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/alucarders/SHSPhoneComponentSwift.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/alucarders/SHSPhoneComponentSwift.git", :tag => "v#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "SHSPhoneComponent/Library/*.{h,m}"
+  s.source_files  = "SHSPhoneComponent/Library/*.swift"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

@@ -10,6 +10,16 @@
 		39D869821F67C0160038CB49 /* SHSPhoneComponentSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D869781F67C0160038CB49 /* SHSPhoneComponentSwift.framework */; };
 		39D869871F67C0160038CB49 /* SHSPhoneComponentSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869861F67C0160038CB49 /* SHSPhoneComponentSwiftTests.swift */; };
 		39D869891F67C0160038CB49 /* SHSPhoneComponentSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 39D8697B1F67C0160038CB49 /* SHSPhoneComponentSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39D8699F1F67D8910038CB49 /* SHSFlagAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8699E1F67D8910038CB49 /* SHSFlagAccessoryView.swift */; };
+		39D869A01F67D8910038CB49 /* SHSFlagAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D8699E1F67D8910038CB49 /* SHSFlagAccessoryView.swift */; };
+		39D869A21F67D8C90038CB49 /* SHSPhoneLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A11F67D8C90038CB49 /* SHSPhoneLogic.swift */; };
+		39D869A31F67D8C90038CB49 /* SHSPhoneLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A11F67D8C90038CB49 /* SHSPhoneLogic.swift */; };
+		39D869A51F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A41F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift */; };
+		39D869A61F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A41F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift */; };
+		39D869A81F67D8FD0038CB49 /* SHSPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A71F67D8FD0038CB49 /* SHSPhoneTextField.swift */; };
+		39D869A91F67D8FD0038CB49 /* SHSPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869A71F67D8FD0038CB49 /* SHSPhoneTextField.swift */; };
+		39D869AB1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */; };
+		39D869AC1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +42,11 @@
 		39D869941F67C26C0038CB49 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		39D869951F67C26C0038CB49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		39D869961F67C26C0038CB49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		39D8699E1F67D8910038CB49 /* SHSFlagAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSFlagAccessoryView.swift; sourceTree = "<group>"; };
+		39D869A11F67D8C90038CB49 /* SHSPhoneLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSPhoneLogic.swift; sourceTree = "<group>"; };
+		39D869A41F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSPhoneNumberFormatter.swift; sourceTree = "<group>"; };
+		39D869A71F67D8FD0038CB49 /* SHSPhoneTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSPhoneTextField.swift; sourceTree = "<group>"; };
+		39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHSPhoneNumberFormatter+UserConfig.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				39D8697B1F67C0160038CB49 /* SHSPhoneComponentSwift.h */,
+				39D8699D1F67D8400038CB49 /* Library */,
 				39D8697C1F67C0160038CB49 /* Info.plist */,
 			);
 			path = SHSPhoneComponentSwift;
@@ -99,6 +115,18 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		39D8699D1F67D8400038CB49 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				39D8699E1F67D8910038CB49 /* SHSFlagAccessoryView.swift */,
+				39D869A11F67D8C90038CB49 /* SHSPhoneLogic.swift */,
+				39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */,
+				39D869A41F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift */,
+				39D869A71F67D8FD0038CB49 /* SHSPhoneTextField.swift */,
+			);
+			path = Library;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -162,6 +190,7 @@
 				TargetAttributes = {
 					39D869771F67C0160038CB49 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					39D869801F67C0160038CB49 = {
@@ -210,6 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D869A21F67D8C90038CB49 /* SHSPhoneLogic.swift in Sources */,
+				39D8699F1F67D8910038CB49 /* SHSFlagAccessoryView.swift in Sources */,
+				39D869AB1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift in Sources */,
+				39D869A51F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift in Sources */,
+				39D869A81F67D8FD0038CB49 /* SHSPhoneTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D869A91F67D8FD0038CB49 /* SHSPhoneTextField.swift in Sources */,
+				39D869A01F67D8910038CB49 /* SHSFlagAccessoryView.swift in Sources */,
+				39D869AC1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift in Sources */,
+				39D869A61F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift in Sources */,
 				39D869871F67C0160038CB49 /* SHSPhoneComponentSwiftTests.swift in Sources */,
+				39D869A31F67D8C90038CB49 /* SHSPhoneLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +375,7 @@
 		39D8698D1F67C0160038CB49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -348,6 +388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.SHSPhoneComponentSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -355,6 +396,7 @@
 		39D8698E1F67C0160038CB49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -374,6 +416,7 @@
 		39D869901F67C0160038CB49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SHSPhoneComponentSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.SHSPhoneComponentSwiftTests;
@@ -385,6 +428,7 @@
 		39D869911F67C0160038CB49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SHSPhoneComponentSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.SHSPhoneComponentSwiftTests;

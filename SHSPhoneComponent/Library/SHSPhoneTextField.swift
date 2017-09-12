@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Simple UITextField subclass to handle phone numbers formats
+ */
 class SHSPhoneTextField: UITextField {
     
     /**

@@ -121,8 +121,8 @@
 			children = (
 				39D8699E1F67D8910038CB49 /* SHSFlagAccessoryView.swift */,
 				39D869A11F67D8C90038CB49 /* SHSPhoneLogic.swift */,
-				39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */,
 				39D869A41F67D8F20038CB49 /* SHSPhoneNumberFormatter.swift */,
+				39D869AA1F67D93B0038CB49 /* SHSPhoneNumberFormatter+UserConfig.swift */,
 				39D869A71F67D8FD0038CB49 /* SHSPhoneTextField.swift */,
 			);
 			path = Library;

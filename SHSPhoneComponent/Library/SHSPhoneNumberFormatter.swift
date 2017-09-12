@@ -17,14 +17,24 @@ public class SHSPhoneNumberFormatter: Formatter {
      If you want to use leftView or leftViewMode property set this property to false.
      Default is false.
      */
-    public var canAffectLeftViewByFormatter: Bool = true
+    public var canAffectLeftViewByFormatter: Bool = false
     /**
      Prefix for all formats.
      */
-    private var prefix: String?
+    private var prefix: String = ""
     private weak var textField: SHSPhoneTextField?
 
-    private var config: [String: Any?] = [:]
+    internal var config: [String: Any?]?
+
+    // MARK: - Life cycle
+    public override init() {
+        super.init()
+//        resetFormats()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     /**
      Returns all digits from a string.

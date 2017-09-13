@@ -14,7 +14,16 @@ public typealias SHSTextBlock = (_ textField: UITextField) -> Void
  Simple UITextField subclass to handle phone numbers formats
  */
 public class SHSPhoneTextField: UITextField {
-    
+
+    public var shsDelegate: UITextFieldDelegate? {
+        get {
+            return logicDelegate.delegate
+        }
+        set {
+            logicDelegate.delegate = newValue
+        }
+    }
+
     /**
      SHSPhoneNumberFormatter instance.
      Use it to configure format properties.
@@ -40,6 +49,8 @@ public class SHSPhoneTextField: UITextField {
         return formatter.digitsOnlyString(from: self.text?.replacingOccurrences(of: formatter.prefix,
                                                                                  with: ""))
     }
+
+    private var logicDelegate = SHSPhoneLogic()
     
     // MARK: - Life cycle
     override init(frame: CGRect) {
@@ -54,20 +65,15 @@ public class SHSPhoneTextField: UITextField {
     
     private func logicInitialization() {
         formatter.textField = self
-
-//        logicDelegate = [[SHSPhoneLogic alloc] init];
-        
-//        [super setDelegate:logicDelegate];
+        super.delegate = logicDelegate
         self.keyboardType = UIKeyboardType.numberPad
     }
-
     
     /**
      Formats a text and sets it to a textfield.
      */
     func set(formattedText text: String) {
-        //
+        SHSPhoneLogic.applyFormat(textField: self, forText: text)
     }
     
-    // MARK: - Delegates
 }

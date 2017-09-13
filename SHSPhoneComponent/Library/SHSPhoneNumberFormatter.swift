@@ -31,8 +31,8 @@ public class SHSPhoneNumberFormatter: Formatter {
         set {
             let phoneNumber = textField?.phoneNumberWithoutPrefix
             _prefix = newValue
-            // TODO:
-//            [SHSPhoneLogic applyFormat:self.textField forText:[_prefix stringByAppendingString:phoneNumber ?: @""]];
+            SHSPhoneLogic.applyFormat(textField: textField,
+                                      forText: _prefix.appending(phoneNumber ?? ""))
         }
     }
 
@@ -210,10 +210,10 @@ public class SHSPhoneNumberFormatter: Formatter {
         obj?.pointee =  digitsOnlyString(from: string) as AnyObject
         return true
     }
+
     public override func string(for obj: Any?) -> String? {
         if !(obj is String) { return nil }
         return values(for: obj as! String)[Keys.text] as? String
     }
-
 
 }

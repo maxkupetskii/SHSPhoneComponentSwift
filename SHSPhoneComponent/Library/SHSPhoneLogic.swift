@@ -45,11 +45,12 @@ class SHSPhoneLogic: NSObject, UITextFieldDelegate {
     /**
      Formate a text and set it to a textfield.
      */
-    class func applyFormat(textField: SHSPhoneTextField, forText text: String?) {
-        let result = textField.formatter.values(for: text ?? "")
-        textField.text = result["text"] as? String
-        if textField.formatter.canAffectLeftViewByFormatter {
-            updateLeftImageView(textField: textField,
+    class func applyFormat(textField: SHSPhoneTextField?, forText text: String?) {
+        guard let notNilTextField = textField else { return }
+        let result = notNilTextField.formatter.values(for: text ?? "")
+        notNilTextField.text = result["text"] as? String
+        if notNilTextField.formatter.canAffectLeftViewByFormatter {
+            updateLeftImageView(textField: notNilTextField,
                                 imagePath: result["image"] as? String)
         }
     }

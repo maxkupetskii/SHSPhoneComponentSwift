@@ -11,26 +11,27 @@ import UIKit
 /**
  Simple UITextField subclass to handle phone numbers formats
  */
-class SHSPhoneTextField: UITextField {
+public class SHSPhoneTextField: UITextField {
     
     /**
      SHSPhoneNumberFormatter instance.
      Use it to configure format properties.
      */
-//    @property (readonly, strong) SHSPhoneNumberFormatter *formatter;
-    
+    public var formatter = SHSPhoneNumberFormatter()
+
     /**
      Phone number without formatting. Ex: 89201235678
      */
-    var phoneNumber: String? {
-        return "" // TODO:
+    public var phoneNumber: String? {
+        return formatter.digitsOnlyString(from: self.text)
     }
     
     /**
      Phone number without formatting and prefix
      */
-    var phoneNumberWithoutPrefix: String? {
-        return "" // TODO:
+    public var phoneNumberWithoutPrefix: String? {
+        return formatter.digitsOnlyString(from: self.text?.replacingOccurrences(of: formatter.prefix,
+                                                                                 with: ""))
     }
     
     // MARK: - Life cycle
@@ -39,17 +40,16 @@ class SHSPhoneTextField: UITextField {
         logicInitialization()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         logicInitialization()
     }
     
     private func logicInitialization() {
-//        _formatter = [[SHSPhoneNumberFormatter alloc] init];
-//        _formatter.textField = self;
-//        
+        formatter.textField = self
+
 //        logicDelegate = [[SHSPhoneLogic alloc] init];
-//        
+        
 //        [super setDelegate:logicDelegate];
         self.keyboardType = UIKeyboardType.numberPad
     }
@@ -59,7 +59,7 @@ class SHSPhoneTextField: UITextField {
      Formats a text and sets it to a textfield.
      */
     func set(formattedText text: String) {
-        // TODO:
+        //
     }
     
     // MARK: - Delegates

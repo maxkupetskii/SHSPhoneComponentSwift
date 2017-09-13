@@ -13,6 +13,8 @@ import Foundation
  */
 public class SHSPhoneNumberFormatter: Formatter {
 
+    public weak var textField: SHSPhoneTextField?
+
     /**
      If you want to use leftView or leftViewMode property set this property to false.
      Default is false.
@@ -33,7 +35,6 @@ public class SHSPhoneNumberFormatter: Formatter {
 //            [SHSPhoneLogic applyFormat:self.textField forText:[_prefix stringByAppendingString:phoneNumber ?: @""]];
         }
     }
-    private weak var textField: SHSPhoneTextField?
 
     internal var config: [String: Any?]?
 
@@ -51,7 +52,7 @@ public class SHSPhoneNumberFormatter: Formatter {
     /**
      Returns all digits from a string.
      */
-    func digitsOnlyString(from aString: String) -> String {
+    func digitsOnlyString(from aString: String?) -> String {
         return SHSPhoneNumberFormatter.digitsOnlyString(from: aString)
     }
 
@@ -185,14 +186,15 @@ public class SHSPhoneNumberFormatter: Formatter {
     /**
      Returns all digits from a string.
      */
-    class func digitsOnlyString(from aString: String) -> String {
+    class func digitsOnlyString(from aString: String?) -> String {
+        guard let notNilString = aString else { return "" }
         do {
             let regex = try NSRegularExpression(pattern: "\\D",
                                             options: .caseInsensitive)
-            return regex.stringByReplacingMatches(in: aString,
+            return regex.stringByReplacingMatches(in: notNilString,
                                                   options: [],
                                                   range: NSRange(location: 0,
-                                                                 length: aString.characters.count),
+                                                                 length: notNilString.characters.count),
                                                   withTemplate: "")
         } catch {
             print(error)

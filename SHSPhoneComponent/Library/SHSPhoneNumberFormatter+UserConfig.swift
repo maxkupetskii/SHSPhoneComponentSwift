@@ -8,13 +8,14 @@
 
 extension SHSPhoneNumberFormatter {
 
-    private enum Keys {
+    internal enum Keys {
         static let defaultConfig  = "default"
         static let format         = "format"
         static let image          = "image"
         static let defaultPattern = "#############"
         static let regexp         = "regexp"
         static let imagePath      = "imagePath"
+        static let text           = "text"
     }
 
     // MARK: - Predefined configs
@@ -82,10 +83,7 @@ extension SHSPhoneNumberFormatter {
     }
 
     /**
-     Patterns array keep references to dictionaries each with individual patterns configuration. 
-     Each pattern dictionary should contain key "format" with format representation string,
-     key for regular expression named "regexp" with string value and 
-     optionally "imagePath" key with image name string
+     Patterns array keep references to dictionaries each with individual patterns configuration. Each pattern dictionary should contain key "format" with format representation string, key for regular expression named "regexp" with string value and optionally "imagePath" key with image name string
 
      All numbers matched your regexp will be formatted with your style and image
      Symbol '#' represents any digit.

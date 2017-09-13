@@ -21,7 +21,18 @@ public class SHSPhoneNumberFormatter: Formatter {
     /**
      Prefix for all formats.
      */
-    private var prefix: String = ""
+    private var _prefix: String = ""
+    public var prefix: String {
+        get {
+            return _prefix
+        }
+        set {
+            let phoneNumber = textField?.phoneNumberWithoutPrefix
+            _prefix = newValue
+            // TODO:
+//            [SHSPhoneLogic applyFormat:self.textField forText:[_prefix stringByAppendingString:phoneNumber ?: @""]];
+        }
+    }
     private weak var textField: SHSPhoneTextField?
 
     internal var config: [String: Any?]?
@@ -29,18 +40,86 @@ public class SHSPhoneNumberFormatter: Formatter {
     // MARK: - Life cycle
     public override init() {
         super.init()
-//        resetFormats()
+        resetFormats()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Filtering Input String
     /**
      Returns all digits from a string.
      */
-    func digitOnlyString(from aString: String) -> String {
-        return ""
+    func digitsOnlyString(from aString: String) -> String {
+        return SHSPhoneNumberFormatter.digitsOnlyString(from: aString)
+    }
+
+    private func stringWithoutFormat(aString: String) -> String {
+//        let dict = configForSequence(aString: aString)
+//        let format = dict?["format"] as? String
+
+        return digitsOnlyString(from: aString)
+    }
+
+    // MARK: - Find Matched Dictionary
+    private func matchString(aString: String,
+                             withPattern pattern: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern,
+                                                options: .caseInsensitive)
+            let match = regex.firstMatch(in: aString,
+                                         options: [],
+                                         range: NSRange(location: 0,
+                                                        length: aString.characters.count))
+            return match != nil
+        } catch {
+            print(error)
+        }
+        return false
+    }
+
+    private func configForSequence(aString: String) -> [String: Any?]? {
+        let defaultConfig = config?[Keys.defaultConfig] as? [String: Any?]
+        guard let notNilConfig = config else {
+            return defaultConfig
+        }
+
+        for format in notNilConfig.keys {
+            if matchString(aString: aString, withPattern: format) {
+                return notNilConfig[format] as? [String: Any?]
+            }
+        }
+        return defaultConfig
+    }
+
+    // MARK: - Getting Formatted String and Image Path
+    private func requireSubstitute(char: UnicodeScalar) -> Bool {
+        return char == "#"
+    }
+
+    private func applyFormat(_ format: String?,
+                             forFormattedString formattedDigits: String) -> String {
+        var result = ""
+        guard let notNilFormat = format else { return result }
+
+        let formatUnichars = notNilFormat.unicodeScalars.map { UnicodeScalar($0) }
+        let formattedDigitsUnichars = formattedDigits.unicodeScalars.map { UnicodeScalar($0) }
+
+        var charIndex = 0
+        for i in 0..<formatUnichars.count {
+            guard charIndex < formattedDigitsUnichars.count else { break }
+            let char = formatUnichars[i]
+            if requireSubstitute(char: char) {
+                let sp = formattedDigitsUnichars[charIndex]
+                charIndex += 1
+                result.append(String(sp))
+            } else {
+                result.append(String(char))
+            }
+        }
+
+        return String(format: "%@%@", prefix, result)
     }
 
     /**
@@ -49,7 +128,16 @@ public class SHSPhoneNumberFormatter: Formatter {
      Image path can be nil
      */
     private func values(for aString: String) -> [String: Any?] {
-        return [:]
+        var nonPrefix = aString
+        if aString.hasPrefix(prefix) {
+            nonPrefix = aString.substring(from: prefix.endIndex)
+        }
+        let formattedDigits = stringWithoutFormat(aString: nonPrefix)
+        let configDict = configForSequence(aString: formattedDigits)
+        let result = applyFormat(configDict?[Keys.format] as? String,
+                                 forFormattedString: formattedDigits)
+
+        return [Keys.image: configDict?[Keys.image] as? String, Keys.text: result]
     }
 
     // MARK: - Class methods
@@ -57,29 +145,73 @@ public class SHSPhoneNumberFormatter: Formatter {
      Removes required number of digits in the phone text.
      */
     class func formattedRemove(string: String, atIndex range: NSRange) -> String {
-        return ""
+        var newString = string
+        var removeCount = valuableCharCount(in: (newString as NSString).substring(with: range))
+        if range.length == 1 { removeCount = 1 }
+
+        var newStringUnichars = newString.unicodeScalars.map { UnicodeScalar($0) }
+        for wordCount in 0..<removeCount {
+            for i in (0...(range.location + range.length - wordCount - 1)).reversed() {
+                let char = newStringUnichars[i]
+                if isValuable(char: char) {
+                    newStringUnichars.remove(at: i)
+                    break
+                }
+            }
+        }
+        let ans = newStringUnichars.map { Character($0) }
+        return String(ans)
     }
 
     /**
      Checks if a char is a valuable symbol (i.e. part of a number).
      Valuable chars are all digits.
      */
-    class func isValuable(char: UniChar) -> Bool {
-        return true
+    class func isValuable(char: UnicodeScalar) -> Bool {
+        return CharacterSet.decimalDigits.contains(char)
     }
     
     /**
      Returns a count of valuable symbols in a string.
      */
-    class func valuableCharCount(inString string: String) -> Int {
-        return 0
+    class func valuableCharCount(in string: String) -> Int {
+        var count = 0
+        for unicodeChar in string.unicodeScalars {
+            if isValuable(char: unicodeChar) { count += 1 }
+        }
+        return count
     }
 
     /**
      Returns all digits from a string.
      */
-    class func digitOnlyString(from aString: String) -> String {
+    class func digitsOnlyString(from aString: String) -> String {
+        do {
+            let regex = try NSRegularExpression(pattern: "\\D",
+                                            options: .caseInsensitive)
+            return regex.stringByReplacingMatches(in: aString,
+                                                  options: [],
+                                                  range: NSRange(location: 0,
+                                                                 length: aString.characters.count),
+                                                  withTemplate: "")
+        } catch {
+            print(error)
+        }
         return ""
     }
+
+    // MARK: - Formatter
+    public override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?,
+                                        for string: String,
+                                        errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        guard obj != nil else { return false }
+        obj?.pointee =  digitsOnlyString(from: string) as AnyObject
+        return true
+    }
+    public override func string(for obj: Any?) -> String? {
+        if !(obj is String) { return nil }
+        return values(for: obj as! String)[Keys.text] as? String
+    }
+
 
 }

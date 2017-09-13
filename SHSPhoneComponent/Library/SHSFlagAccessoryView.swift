@@ -39,7 +39,7 @@ class SHSFlagAccessoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(image: UIImage) {
+    func set(image: UIImage?) {
         imageView?.image = image
     }
     

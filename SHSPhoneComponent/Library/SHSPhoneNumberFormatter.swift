@@ -128,7 +128,7 @@ public class SHSPhoneNumberFormatter: Formatter {
      Return value format {text: "FORMATTED_PHONE_NUMBER", image: "PATH_TO_IMAGE"}
      Image path can be nil
      */
-    private func values(for aString: String) -> [String: Any?] {
+    public func values(for aString: String) -> [String: Any?] {
         var nonPrefix = aString
         if aString.hasPrefix(prefix) {
             nonPrefix = aString.substring(from: prefix.endIndex)

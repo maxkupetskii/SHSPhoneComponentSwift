@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias SHSTextBlock = (_ textField: UITextField) -> Void
+
 /**
  Simple UITextField subclass to handle phone numbers formats
  */
@@ -18,6 +20,11 @@ public class SHSPhoneTextField: UITextField {
      Use it to configure format properties.
      */
     public var formatter = SHSPhoneNumberFormatter()
+
+    /**
+     Block will be called when text changed
+     */
+    public var textDidChangeBlock: SHSTextBlock?
 
     /**
      Phone number without formatting. Ex: 89201235678

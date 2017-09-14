@@ -1,6 +1,6 @@
 # SHSPhoneComponentSwift
-A Swift version of SHSPhoneComponent framework
-UITextField and Formatter subclasses for formatting phone numbers. Allows different formats for different countries (patterns). The caret positioning works excellent.
+A Swift version of [SHSPhoneComponent](https://github.com/Serheo/SHSPhoneComponent) framework.
+UITextField and Formatter subclasses for formatting phone numbers. Allows to use different formats for different countries (patterns). The caret positioning works excellent.
 
 # Installation
 ## CocoaPods

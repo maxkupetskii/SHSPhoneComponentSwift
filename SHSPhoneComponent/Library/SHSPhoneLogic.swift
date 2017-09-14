@@ -35,7 +35,7 @@ internal class SHSPhoneLogic: NSObject {
         applyFormat(textField: textField, forText: newString)
         popCaretPosition(textField: textField,
                          range: range,
-                         caretPosition: 0)
+                         caretPosition: caretPosition)
 
         textField.sendActions(for: .valueChanged)
         if textField.textDidChangeBlock != nil {
@@ -77,7 +77,7 @@ internal class SHSPhoneLogic: NSObject {
     // MARK: - Caret Control
     class func pushCaretPosition(textField: UITextField, range: NSRange) -> Int {
         let subString = ((textField.text ?? "") as NSString)
-                        .substring(to: range.location + range.length)
+                        .substring(from: range.location + range.length)
         return SHSPhoneNumberFormatter.valuableCharCount(in: subString)
     }
 

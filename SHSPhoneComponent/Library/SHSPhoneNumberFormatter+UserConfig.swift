@@ -19,11 +19,11 @@ extension SHSPhoneNumberFormatter {
     }
 
     // MARK: - Predefined configs
-    var defaultPattern: [String: Any?] {
+    private var defaultPattern: [String: Any?] {
         return [Keys.format: Keys.defaultPattern, Keys.image: nil]
     }
 
-    var resetConfig: [String: Any?] {
+    private var resetConfig: [String: Any?] {
         return [Keys.defaultConfig: defaultPattern]
     }
 
@@ -83,7 +83,7 @@ extension SHSPhoneNumberFormatter {
     }
 
     /**
-     Patterns array keep references to dictionaries each with individual patterns configuration. Each pattern dictionary should contain key "format" with format representation string, key for regular expression named "regexp" with string value and optionally "imagePath" key with image name string
+     Patterns array keeps references to dictionaries each with individual patterns configuration. Each pattern dictionary should contain key "format" with format representation string, key for regular expression named "regexp" with string value and optionally "imagePath" key with image name string
 
      All numbers matched your regexp will be formatted with your style and image
      Symbol '#' represents any digit.

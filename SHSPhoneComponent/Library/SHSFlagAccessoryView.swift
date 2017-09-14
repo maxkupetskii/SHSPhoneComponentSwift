@@ -11,7 +11,7 @@ import UIKit
 /**
  Accessory view that shows flag images.
  */
-class SHSFlagAccessoryView: UIView {
+internal class SHSFlagAccessoryView: UIView {
     
     private enum Sizes {
         static let iconSize: CGFloat       = 18

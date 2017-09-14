@@ -11,7 +11,7 @@ import Foundation
 /**
  Formatter class that converts input string to phone format.
  */
-public class SHSPhoneNumberFormatter: Formatter {
+public final class SHSPhoneNumberFormatter: Formatter {
 
     public weak var textField: SHSPhoneTextField?
 
@@ -20,6 +20,7 @@ public class SHSPhoneNumberFormatter: Formatter {
      Default is false.
      */
     public var canAffectLeftViewByFormatter: Bool = false
+
     /**
      Prefix for all formats.
      */
@@ -57,10 +58,28 @@ public class SHSPhoneNumberFormatter: Formatter {
     }
 
     private func stringWithoutFormat(aString: String) -> String {
-//        let dict = configForSequence(aString: aString)
-//        let format = dict?["format"] as? String
+        var theString = aString
 
-        return digitsOnlyString(from: aString)
+        let dict = configForSequence(aString: aString)
+        let format = dict?[Keys.format] as? String
+
+        let aStringChars = aString.unicodeScalars.map { UnicodeScalar($0) }
+        let formatChars = (format ?? "").unicodeScalars.map { UnicodeScalar($0) }
+        var removeRanges: [NSRange] = []
+        for i in 0..<min(formatChars.count, aStringChars.count) {
+            let formatCh = formatChars[i]
+            if formatCh != aStringChars[i] { break }
+            if SHSPhoneNumberFormatter.isValuable(char: formatCh) {
+                removeRanges.append(NSRange(location: i, length: 1))
+            }
+        }
+
+        for value in removeRanges.reversed() {
+            theString = (theString as NSString).replacingCharacters(in: value,
+                                                                    with: "")
+        }
+
+        return digitsOnlyString(from: theString)
     }
 
     // MARK: - Find Matched Dictionary

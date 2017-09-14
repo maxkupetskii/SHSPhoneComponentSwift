@@ -11,7 +11,7 @@ import UIKit
 /**
  Incapsulate number formatting and caret positioning logics. Also used as inner delegate.
  */
-class SHSPhoneLogic: NSObject, UITextFieldDelegate {
+internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
 
     weak var delegate: UITextFieldDelegate?
 

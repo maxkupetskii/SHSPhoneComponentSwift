@@ -18,7 +18,7 @@ class PhoneViewController: UIViewController {
 
 //        defaultExample()
 //        prefixExample()
-        doubleFormatExaple()
+        doubleFormatExample()
 //        doubleFormatExamplePrefixed()
 
         phoneField.textDidChangeBlock = { (textField: UITextField!) -> Void in
@@ -36,21 +36,31 @@ class PhoneViewController: UIViewController {
     func prefixExample() {
         phoneField.formatter.setDefaultOutputPattern("(###) ###-##-##")
         phoneField.formatter.prefix = "+7 "
-        phoneField.formatter.addOutputPattern("(###) ###-##-##", forRegExp: "^[0-689]\\d*$", imagePath:"SHSPhoneImage.bundle/flag_ru")
+        phoneField.formatter.addOutputPattern("(###) ###-##-##",
+                                              forRegExp: "^[0-689]\\d*$",
+                                              imagePath: "SHSPhoneImage.bundle/flag_ru")
     }
     
-    func doubleFormatExaple() {
+    func doubleFormatExample() {
         phoneField.formatter.setDefaultOutputPattern("##########")
         phoneField.formatter.prefix = nil
-        phoneField.formatter.addOutputPattern("+# (###) ###-##-##", forRegExp: "^7[0-689]\\d*$", imagePath:"SHSPhoneImage.bundle/flag_ru")
-        phoneField.formatter.addOutputPattern("+### ###-##-##", forRegExp: "^380\\d*$", imagePath:"SHSPhoneImage.bundle/flag_ua")
+        phoneField.formatter.addOutputPattern("+# (###) ###-##-##",
+                                              forRegExp: "^7[0-689]\\d*$",
+                                              imagePath: "SHSPhoneImage.bundle/flag_ru")
+        phoneField.formatter.addOutputPattern("+### ###-##-##",
+                                              forRegExp: "^380\\d*$",
+                                              imagePath: "SHSPhoneImage.bundle/flag_ua")
     }
     
     func doubleFormatExamplePrefixed() {
         phoneField.formatter.setDefaultOutputPattern("### ### ###")
         phoneField.formatter.prefix = "+7 "
-        phoneField.formatter.addOutputPattern("(###) ###-##-##", forRegExp: "^1\\d*$", imagePath:"SHSPhoneImage.bundle/flag_ru")
-        phoneField.formatter.addOutputPattern("(###) ###-###", forRegExp: "^2\\d*$", imagePath:"SHSPhoneImage.bundle/flag_ua")
+        phoneField.formatter.addOutputPattern("(###) ###-##-##",
+                                              forRegExp: "^1\\d*$",
+                                              imagePath:"SHSPhoneImage.bundle/flag_ru")
+        phoneField.formatter.addOutputPattern("(###) ###-###",
+                                              forRegExp: "^2\\d*$",
+                                              imagePath:"SHSPhoneImage.bundle/flag_ua")
     }
 
 }

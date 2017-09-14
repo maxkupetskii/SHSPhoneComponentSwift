@@ -11,10 +11,11 @@ import UIKit
 /**
  Incapsulate number formatting and caret positioning logics. Also used as inner delegate.
  */
-internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
+internal class SHSPhoneLogic: NSObject {
 
     weak var delegate: UITextFieldDelegate?
 
+    // MARK: - Logic Methods
     /**
      Incapsulate number formatting and caret positioning logics.
      */
@@ -34,7 +35,7 @@ internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
         applyFormat(textField: textField, forText: newString)
         popCaretPosition(textField: textField,
                          range: range,
-                         caretPosition: caretPosition)
+                         caretPosition: 0)
 
         textField.sendActions(for: .valueChanged)
         if textField.textDidChangeBlock != nil {
@@ -56,7 +57,6 @@ internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
         }
     }
 
-    // MARK: - Logic Methods
     class func setImageLeftView(textField: UITextField, image: UIImage?) {
         if !(textField.leftView is SHSFlagAccessoryView) {
             textField.leftView = SHSFlagAccessoryView(with: textField)
@@ -113,8 +113,11 @@ internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
         }
         input.selectedTextRange = input.textRange(from: start, to: end)
     }
+}
 
-    // MARK: - UITextFieldDelegate
+// MARK: - UITextFieldDelegate
+extension SHSPhoneLogic: UITextFieldDelegate {
+
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

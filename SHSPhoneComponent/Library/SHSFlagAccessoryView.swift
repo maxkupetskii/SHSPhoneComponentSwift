@@ -26,13 +26,14 @@ internal class SHSFlagAccessoryView: UIView {
 
         let fieldRect = textField.textRect(forBounds: textField.bounds)
         self.frame = CGRect(x: 0, y: 0,
-                            width: self.viewWidth(for: fieldRect),
+                            width: viewWidth(for: fieldRect),
                             height: textField.frame.size.height)
         
         imageView = UIImageView(frame:
-            CGRect(x: self.leftShift(for: fieldRect),
+            CGRect(x: leftShift(for: fieldRect),
                    y: fieldRect.origin.y + (fieldRect.size.height - Sizes.iconSize)/2,
                    width: Sizes.iconSize, height: Sizes.iconSize))
+        self.addSubview(imageView!)
     }
     
     required init?(coder aDecoder: NSCoder) {

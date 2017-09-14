@@ -21,9 +21,10 @@ class SHSPhoneLogic: NSObject, UITextFieldDelegate {
     class func logicTextField(_ textField: SHSPhoneTextField,
                               shouldChangeCharactersIn range: NSRange,
                               replacementString string: String) -> Bool {
-        if textField.formatter.prefix.characters.count > 0
-            && range.location < textField.formatter.prefix.characters.count {
-            return false
+        if let notNilPrefix = textField.formatter.prefix {
+            if range.location < notNilPrefix.characters.count {
+                return false
+            }
         }
 
         let caretPosition = pushCaretPosition(textField: textField, range: range)
@@ -123,9 +124,14 @@ class SHSPhoneLogic: NSObject, UITextFieldDelegate {
         _ = SHSPhoneLogic.logicTextField(phoneTextField,
                                          shouldChangeCharactersIn: range,
                                          replacementString: string)
-        _ = delegate?.textField!(textField,
-                                 shouldChangeCharactersIn: range,
-                                 replacementString: string)
+
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textField(_:shouldChangeCharactersIn:replacementString:))) {
+                _ = notNilDelegate.textField!(textField,
+                                              shouldChangeCharactersIn: range,
+                                              replacementString: string)
+            }
+        }
         return false
     }
 
@@ -138,11 +144,13 @@ class SHSPhoneLogic: NSObject, UITextFieldDelegate {
             textField.leftViewMode = .never
         }
 
-        if delegate!.responds(to: #selector(textFieldShouldClear(_:))) {
-            return delegate!.textFieldShouldClear!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldShouldClear(_:))) {
+                return notNilDelegate.textFieldShouldClear!(textField)
+            }
         }
 
-        if phoneTextField.formatter.prefix.unicodeScalars.count > 0 {
+        if phoneTextField.formatter.prefix != nil {
             phoneTextField.set(formattedText: "")
             return false
         } else {
@@ -151,34 +159,44 @@ class SHSPhoneLogic: NSObject, UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if delegate!.responds(to: #selector(textFieldShouldBeginEditing(_:))) {
-            return delegate!.textFieldShouldBeginEditing!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldShouldBeginEditing(_:))) {
+                return notNilDelegate.textFieldShouldBeginEditing!(textField)
+            }
         }
         return true
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if delegate!.responds(to: #selector(textFieldDidBeginEditing(_:))) {
-            return delegate!.textFieldDidBeginEditing!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldDidBeginEditing(_:))) {
+                return notNilDelegate.textFieldDidBeginEditing!(textField)
+            }
         }
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if delegate!.responds(to: #selector(textFieldShouldEndEditing(_:))) {
-            return delegate!.textFieldShouldEndEditing!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldShouldEndEditing(_:))) {
+                return notNilDelegate.textFieldShouldEndEditing!(textField)
+            }
         }
         return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if delegate!.responds(to: #selector(textFieldDidEndEditing(_:))) {
-            return delegate!.textFieldDidEndEditing!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldDidEndEditing(_:))) {
+                return notNilDelegate.textFieldDidEndEditing!(textField)
+            }
         }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if delegate!.responds(to: #selector(textFieldShouldReturn(_:))) {
-            return delegate!.textFieldShouldReturn!(textField)
+        if let notNilDelegate = delegate {
+            if notNilDelegate.responds(to: #selector(textFieldShouldReturn(_:))) {
+                return notNilDelegate.textFieldShouldReturn!(textField)
+            }
         }
         return true
     }

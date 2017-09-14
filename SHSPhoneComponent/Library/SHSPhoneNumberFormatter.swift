@@ -23,8 +23,8 @@ public class SHSPhoneNumberFormatter: Formatter {
     /**
      Prefix for all formats.
      */
-    private var _prefix: String = ""
-    public var prefix: String {
+    private var _prefix: String?
+    public var prefix: String? {
         get {
             return _prefix
         }
@@ -32,7 +32,7 @@ public class SHSPhoneNumberFormatter: Formatter {
             let phoneNumber = textField?.phoneNumberWithoutPrefix
             _prefix = newValue
             SHSPhoneLogic.applyFormat(textField: textField,
-                                      forText: _prefix.appending(phoneNumber ?? ""))
+                                      forText: _prefix?.appending(phoneNumber ?? ""))
         }
     }
 
@@ -120,7 +120,7 @@ public class SHSPhoneNumberFormatter: Formatter {
             }
         }
 
-        return String(format: "%@%@", prefix, result)
+        return String(format: "%@%@", prefix ?? "", result)
     }
 
     /**
@@ -130,8 +130,10 @@ public class SHSPhoneNumberFormatter: Formatter {
      */
     public func values(for aString: String) -> [String: Any?] {
         var nonPrefix = aString
-        if aString.hasPrefix(prefix) {
-            nonPrefix = aString.substring(from: prefix.endIndex)
+        if let notNilPrefix = prefix {
+            if aString.hasPrefix(notNilPrefix) {
+                nonPrefix = aString.substring(from: notNilPrefix.endIndex)
+            }
         }
         let formattedDigits = stringWithoutFormat(aString: nonPrefix)
         let configDict = configForSequence(aString: formattedDigits)

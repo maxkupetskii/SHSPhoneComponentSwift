@@ -15,7 +15,7 @@ public typealias SHSTextBlock = (_ textField: UITextField) -> Void
  */
 public class SHSPhoneTextField: UITextField {
 
-    public var shsDelegate: UITextFieldDelegate? {
+    override public weak var delegate: UITextFieldDelegate? {
         get {
             return logicDelegate.delegate
         }
@@ -28,7 +28,7 @@ public class SHSPhoneTextField: UITextField {
      SHSPhoneNumberFormatter instance.
      Use it to configure format properties.
      */
-    public var formatter = SHSPhoneNumberFormatter()
+    public private(set) var formatter = SHSPhoneNumberFormatter()
 
     /**
      Block will be called when text changed
@@ -46,8 +46,15 @@ public class SHSPhoneTextField: UITextField {
      Phone number without formatting and prefix
      */
     public var phoneNumberWithoutPrefix: String? {
-        return formatter.digitsOnlyString(from: self.text?.replacingOccurrences(of: formatter.prefix,
-                                                                                 with: ""))
+        var fromString: String?
+        if let notNilPrefix = formatter.prefix {
+            fromString = self.text?.replacingOccurrences(of: notNilPrefix,
+                                                         with: "")
+        } else {
+            fromString = self.text
+        }
+        return formatter.digitsOnlyString(from: fromString)
+
     }
 
     private var logicDelegate = SHSPhoneLogic()

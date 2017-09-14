@@ -38,7 +38,10 @@ class SHSFlagAccessoryView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    /**
+     Set image for accessory view.
+     */
     func set(image: UIImage?) {
         imageView?.image = image
     }

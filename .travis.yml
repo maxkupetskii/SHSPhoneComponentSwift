@@ -1,0 +1,16 @@
+language: objective-c
+osx_image: xcode8.3
+xcode_project: PhoneEmbeddedExample.xcodeproj
+xcode_scheme: PhoneEmbeddedExample
+xcode_sdk: iphonesimulator9.3
+
+branches:
+      only:
+              master
+
+      before_script:
+            - cd Example
+
+      script: 
+            - set -o pipefail
+                - xcodebuild clean build test -project PhoneEmbeddedExample.xcodeproj -scheme PhoneEmbeddedExample -destination 'platform=iOS Simulator,name=iPhone 5s,OS=10.3.1'

@@ -87,17 +87,17 @@ internal class SHSPhoneLogic: NSObject {
         guard let text = textField.text else { return }
         var lasts = caretPosition
         var start = text.unicodeScalars.count
-        let textUnichars = text.unicodeScalars.map { UnicodeScalar($0) }
 
-        for index in (0..<text.unicodeScalars.count).reversed() {
-            if lasts == 0 { break }
-            let char = textUnichars[index]
-            if SHSPhoneNumberFormatter.isValuable(char: char) {
-                lasts -= 1
-            }
-            if lasts <= 0 {
-                start = index
-                break
+        if lasts > 0 {
+            let textUnichars = text.unicodeScalars.map { UnicodeScalar($0) }
+            for (index, char) in textUnichars.enumerated().reversed() {
+                if SHSPhoneNumberFormatter.isValuable(char: char) {
+                    lasts -= 1
+                }
+                if lasts <= 0 {
+                    start = index
+                    break
+                }
             }
         }
 

@@ -127,9 +127,8 @@ public final class SHSPhoneNumberFormatter: Formatter {
         let formattedDigitsUnichars = formattedDigits.unicodeScalars.map { UnicodeScalar($0) }
 
         var charIndex = 0
-        for i in 0..<formatUnichars.count {
+        for char in formatUnichars {
             guard charIndex < formattedDigitsUnichars.count else { break }
-            let char = formatUnichars[i]
             if requireSubstitute(char: char) {
                 let sp = formattedDigitsUnichars[charIndex]
                 charIndex += 1

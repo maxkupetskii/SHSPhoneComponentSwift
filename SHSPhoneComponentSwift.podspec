@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SHSPhoneComponentSwift"
-  s.version      = "0.98"
+  s.version      = "0.99"
   s.summary      = "UITextField and NSFormatter subclasses for formatting phone numbers. Allow different formats for different countries(patterns)"
   s.homepage     = "https://github.com/alucarders/SHSPhoneComponentSwift"
   s.license      = "MIT"

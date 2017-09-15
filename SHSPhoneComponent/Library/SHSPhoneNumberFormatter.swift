@@ -165,7 +165,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
     /**
      Removes required number of digits in the phone text.
      */
-    class func formattedRemove(string: String, atIndex range: NSRange) -> String {
+    public class func formattedRemove(string: String, atIndex range: NSRange) -> String {
         var newString = string
         var removeCount = valuableCharCount(in: (newString as NSString).substring(with: range))
         if range.length == 1 { removeCount = 1 }
@@ -188,14 +188,14 @@ public final class SHSPhoneNumberFormatter: Formatter {
      Checks if a char is a valuable symbol (i.e. part of a number).
      Valuable chars are all digits.
      */
-    class func isValuable(char: UnicodeScalar) -> Bool {
+    internal class func isValuable(char: UnicodeScalar) -> Bool {
         return CharacterSet.decimalDigits.contains(char)
     }
     
     /**
      Returns a count of valuable symbols in a string.
      */
-    class func valuableCharCount(in string: String) -> Int {
+    internal class func valuableCharCount(in string: String) -> Int {
         var count = 0
         for unicodeChar in string.unicodeScalars {
             if isValuable(char: unicodeChar) { count += 1 }
@@ -206,7 +206,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
     /**
      Returns all digits from a string.
      */
-    class func digitsOnlyString(from aString: String?) -> String {
+    public class func digitsOnlyString(from aString: String?) -> String {
         guard let notNilString = aString else { return "" }
         do {
             let regex = try NSRegularExpression(pattern: "\\D",

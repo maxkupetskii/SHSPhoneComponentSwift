@@ -43,7 +43,7 @@ internal class SHSFlagAccessoryView: UIView {
     /**
      Set image for accessory view.
      */
-    func set(image: UIImage?) {
+    internal func set(image: UIImage?) {
         imageView?.image = image
     }
     

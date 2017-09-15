@@ -19,7 +19,7 @@ internal class SHSPhoneLogic: NSObject {
     /**
      Incapsulate number formatting and caret positioning logics.
      */
-    class func logicTextField(_ textField: SHSPhoneTextField,
+    internal class func logicTextField(_ textField: SHSPhoneTextField,
                               shouldChangeCharactersIn range: NSRange,
                               replacementString string: String) -> Bool {
         if let notNilPrefix = textField.formatter.prefix {
@@ -47,7 +47,7 @@ internal class SHSPhoneLogic: NSObject {
     /**
      Formate a text and set it to a textfield.
      */
-    class func applyFormat(textField: SHSPhoneTextField?, forText text: String?) {
+    internal class func applyFormat(textField: SHSPhoneTextField?, forText text: String?) {
         guard let notNilTextField = textField else { return }
         let result = notNilTextField.formatter.values(for: text ?? "")
         notNilTextField.text = result["text"] as? String
@@ -57,7 +57,7 @@ internal class SHSPhoneLogic: NSObject {
         }
     }
 
-    class func setImageLeftView(textField: UITextField, image: UIImage?) {
+    internal class func setImageLeftView(textField: UITextField, image: UIImage?) {
         if !(textField.leftView is SHSFlagAccessoryView) {
             textField.leftView = SHSFlagAccessoryView(with: textField)
         }
@@ -65,7 +65,7 @@ internal class SHSPhoneLogic: NSObject {
         (textField.leftView as? SHSFlagAccessoryView)?.set(image: image)
     }
 
-    class func updateLeftImageView(textField: UITextField, imagePath: String?) {
+    internal class func updateLeftImageView(textField: UITextField, imagePath: String?) {
         if let notNilImagePath = imagePath {
             let givenImage = UIImage(named: notNilImagePath)
             setImageLeftView(textField: textField, image: givenImage)
@@ -75,13 +75,13 @@ internal class SHSPhoneLogic: NSObject {
     }
 
     // MARK: - Caret Control
-    class func pushCaretPosition(textField: UITextField, range: NSRange) -> Int {
+    internal class func pushCaretPosition(textField: UITextField, range: NSRange) -> Int {
         let subString = ((textField.text ?? "") as NSString)
                         .substring(from: range.location + range.length)
         return SHSPhoneNumberFormatter.valuableCharCount(in: subString)
     }
 
-    class func popCaretPosition(textField: UITextField,
+    internal class func popCaretPosition(textField: UITextField,
                                 range: NSRange,
                                 caretPosition: Int) {
         guard let text = textField.text else { return }
@@ -105,7 +105,7 @@ internal class SHSPhoneLogic: NSObject {
                    atRange: NSRange(location: start, length: 0))
     }
 
-    class func selectText(forInput input: UITextField, atRange range: NSRange) {
+    internal class func selectText(forInput input: UITextField, atRange range: NSRange) {
         guard let start = input.position(from: input.beginningOfDocument,
                                          offset: range.location) else { return }
         guard let end = input.position(from: start, offset: range.length) else {

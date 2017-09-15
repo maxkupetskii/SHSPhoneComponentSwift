@@ -79,7 +79,7 @@ public class SHSPhoneTextField: UITextField {
     /**
      Formats a text and sets it to a textfield.
      */
-    func set(formattedText text: String) {
+    public func set(formattedText text: String) {
         SHSPhoneLogic.applyFormat(textField: self, forText: text)
     }
     

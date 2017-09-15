@@ -33,7 +33,9 @@ After this you can start using `SHSPhoneTextField` type for displaying phone num
 ```swift
 phoneField.formatter.setDefaultOutputPattern("+# (###) ###-##-##")
 ```
-![default](https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/default.png)
+<p align="center">
+  <img src="https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/default.png">
+</p>
 
 All input strings will be parsed in that way. Example: +7 (920) 123-45-67
 
@@ -43,7 +45,9 @@ You can set prefix for all inputs:
 phoneField.formatter.setDefaultOutputPattern("(###) ###-##-##")
 phoneField.formatter.prefix = "+7 "
 ```
-![prefix](https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/prefix.jpeg)
+<p align="center">
+  <img src="https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/prefix.jpeg">
+</p>
 
 ## Multiple Formats
 ```swift
@@ -55,7 +59,9 @@ phoneField.formatter.addOutputPattern("+### ###-##-##",
                                       forRegExp: "^380\\d*$", 
                                       imagePath: "flag_ua")
 ```
-![multiple](https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/double.jpeg)
+<p align="center">
+  <img src="https://github.com/alucarders/SHSPhoneComponentSwift/blob/master/screenshots/double.jpeg">
+</p>
 
 ## Multiple Formats with prefix
 ```swift

@@ -11,7 +11,7 @@ import UIKit
 /**
  Incapsulate number formatting and caret positioning logics. Also used as inner delegate.
  */
-internal class SHSPhoneLogic: NSObject {
+internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
 
     weak var delegate: UITextFieldDelegate?
 
@@ -113,11 +113,8 @@ internal class SHSPhoneLogic: NSObject {
         }
         input.selectedTextRange = input.textRange(from: start, to: end)
     }
-}
 
-// MARK: - UITextFieldDelegate
-extension SHSPhoneLogic: UITextFieldDelegate {
-
+    // MARK: - UITextFieldDelegate
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

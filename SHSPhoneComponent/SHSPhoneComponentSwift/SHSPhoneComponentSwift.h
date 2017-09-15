@@ -6,7 +6,7 @@
 //  Copyright © 2017 Maksim Kupetskii. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHSPhoneComponentSwift.
 FOUNDATION_EXPORT double SHSPhoneComponentSwiftVersionNumber;

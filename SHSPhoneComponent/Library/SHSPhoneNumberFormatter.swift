@@ -53,7 +53,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
     /**
      Returns all digits from a string.
      */
-    func digitsOnlyString(from aString: String?) -> String {
+    public func digitsOnlyString(from aString: String?) -> String {
         return SHSPhoneNumberFormatter.digitsOnlyString(from: aString)
     }
 

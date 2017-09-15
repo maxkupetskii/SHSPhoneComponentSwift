@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		396DF7E01F6AAD8E00A87D27 /* SHSPhoneComponentSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396DF7DC1F6AAD4400A87D27 /* SHSPhoneComponentSwift.framework */; };
 		396DF7E11F6AAD8E00A87D27 /* SHSPhoneComponentSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 396DF7DC1F6AAD4400A87D27 /* SHSPhoneComponentSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		396DF8291F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DF8281F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.swift */; };
 		BEF0E3261A6E73B500A918D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0E3251A6E73B500A918D5 /* AppDelegate.swift */; };
 		BEF0E32B1A6E73B500A918D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF0E3291A6E73B500A918D5 /* Main.storyboard */; };
 		BEF0E32D1A6E73B500A918D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF0E32C1A6E73B500A918D5 /* Images.xcassets */; };
@@ -39,6 +40,13 @@
 			remoteGlobalIDString = 39D869771F67C0160038CB49;
 			remoteInfo = SHSPhoneComponentSwift;
 		};
+		396DF82B1F6BA1A300A87D27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEF0E3181A6E73B500A918D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF0E31F1A6E73B500A918D5;
+			remoteInfo = PhoneEmbeddedExample;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +65,9 @@
 
 /* Begin PBXFileReference section */
 		396DF7D61F6AAD4400A87D27 /* SHSPhoneComponentSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHSPhoneComponentSwift.xcodeproj; path = ../../SHSPhoneComponent/SHSPhoneComponentSwift.xcodeproj; sourceTree = "<group>"; };
+		396DF8261F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhoneEmbeddedExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		396DF8281F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEmbeddedExampleTests.swift; sourceTree = "<group>"; };
+		396DF82A1F6BA1A300A87D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF0E3201A6E73B500A918D5 /* PhoneEmbeddedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneEmbeddedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF0E3241A6E73B500A918D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF0E3251A6E73B500A918D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		396DF8231F6BA1A300A87D27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BEF0E31D1A6E73B500A918D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,10 +106,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		396DF8271F6BA1A300A87D27 /* PhoneEmbeddedExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				396DF8281F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.swift */,
+				396DF82A1F6BA1A300A87D27 /* Info.plist */,
+			);
+			path = PhoneEmbeddedExampleTests;
+			sourceTree = "<group>";
+		};
 		BEF0E3171A6E73B500A918D5 = {
 			isa = PBXGroup;
 			children = (
 				BEF0E3221A6E73B500A918D5 /* PhoneEmbeddedExample */,
+				396DF8271F6BA1A300A87D27 /* PhoneEmbeddedExampleTests */,
 				BEF0E3211A6E73B500A918D5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF0E3201A6E73B500A918D5 /* PhoneEmbeddedExample.app */,
+				396DF8261F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +175,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		396DF8251F6BA1A300A87D27 /* PhoneEmbeddedExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 396DF8301F6BA1A300A87D27 /* Build configuration list for PBXNativeTarget "PhoneEmbeddedExampleTests" */;
+			buildPhases = (
+				396DF8221F6BA1A300A87D27 /* Sources */,
+				396DF8231F6BA1A300A87D27 /* Frameworks */,
+				396DF8241F6BA1A300A87D27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				396DF82C1F6BA1A300A87D27 /* PBXTargetDependency */,
+			);
+			name = PhoneEmbeddedExampleTests;
+			productName = PhoneEmbeddedExampleTests;
+			productReference = 396DF8261F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BEF0E31F1A6E73B500A918D5 /* PhoneEmbeddedExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEF0E33F1A6E73B500A918D5 /* Build configuration list for PBXNativeTarget "PhoneEmbeddedExample" */;
@@ -172,10 +219,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = SHS;
 				TargetAttributes = {
+					396DF8251F6BA1A300A87D27 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BEF0E31F1A6E73B500A918D5;
+					};
 					BEF0E31F1A6E73B500A918D5 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -201,6 +253,7 @@
 			projectRoot = "";
 			targets = (
 				BEF0E31F1A6E73B500A918D5 /* PhoneEmbeddedExample */,
+				396DF8251F6BA1A300A87D27 /* PhoneEmbeddedExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +276,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		396DF8241F6BA1A300A87D27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BEF0E31E1A6E73B500A918D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +297,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		396DF8221F6BA1A300A87D27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396DF8291F6BA1A300A87D27 /* PhoneEmbeddedExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BEF0E31C1A6E73B500A918D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +321,11 @@
 			isa = PBXTargetDependency;
 			name = SHSPhoneComponentSwift;
 			targetProxy = 396DF7E21F6AAD8E00A87D27 /* PBXContainerItemProxy */;
+		};
+		396DF82C1F6BA1A300A87D27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEF0E31F1A6E73B500A918D5 /* PhoneEmbeddedExample */;
+			targetProxy = 396DF82B1F6BA1A300A87D27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -276,6 +349,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		396DF82D1F6BA1A300A87D27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = PhoneEmbeddedExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.epam.PhoneEmbeddedExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneEmbeddedExample.app/PhoneEmbeddedExample";
+			};
+			name = Debug;
+		};
+		396DF82E1F6BA1A300A87D27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = PhoneEmbeddedExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.epam.PhoneEmbeddedExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneEmbeddedExample.app/PhoneEmbeddedExample";
+			};
+			name = Release;
+		};
 		BEF0E33D1A6E73B500A918D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -400,6 +511,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		396DF8301F6BA1A300A87D27 /* Build configuration list for PBXNativeTarget "PhoneEmbeddedExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396DF82D1F6BA1A300A87D27 /* Debug */,
+				396DF82E1F6BA1A300A87D27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BEF0E31B1A6E73B500A918D5 /* Build configuration list for PBXProject "PhoneEmbeddedExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

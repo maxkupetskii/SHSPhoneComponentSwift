@@ -5,12 +5,12 @@ xcode_scheme: PhoneEmbeddedExample
 xcode_sdk: iphonesimulator9.3
 
 branches:
-      only:
-              master
+  only:
+    master
 
-      before_script:
-            - cd Example
+before_script:  
+  - cd Example
 
-      script: 
-            - set -o pipefail
-                - xcodebuild clean build test -project PhoneEmbeddedExample.xcodeproj -scheme PhoneEmbeddedExample -destination 'platform=iOS Simulator,name=iPhone 5s,OS=10.3.1'
+script: 
+  - set -o pipefail
+  - xcodebuild clean build test -project PhoneEmbeddedExample.xcodeproj -scheme PhoneEmbeddedExample -destination 'platform=iOS Simulator,name=iPhone 5s,OS=10.3.1'

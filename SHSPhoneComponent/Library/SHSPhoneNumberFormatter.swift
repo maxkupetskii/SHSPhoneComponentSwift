@@ -91,7 +91,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
             let match = regex.firstMatch(in: aString,
                                          options: [],
                                          range: NSRange(location: 0,
-                                                        length: aString.characters.count))
+                                                        length: aString.count))
             return match != nil
         } catch {
             print(error)
@@ -150,7 +150,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
         var nonPrefix = aString
         if let notNilPrefix = prefix {
             if aString.hasPrefix(notNilPrefix) {
-                nonPrefix = aString.substring(from: notNilPrefix.endIndex)
+                nonPrefix = String(aString[notNilPrefix.endIndex...])
             }
         }
         let formattedDigits = stringWithoutFormat(aString: nonPrefix)
@@ -214,7 +214,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
             return regex.stringByReplacingMatches(in: notNilString,
                                                   options: [],
                                                   range: NSRange(location: 0,
-                                                                 length: notNilString.characters.count),
+                                                                 length: notNilString.count),
                                                   withTemplate: "")
         } catch {
             print(error)

@@ -23,7 +23,7 @@ internal class SHSPhoneLogic: NSObject, UITextFieldDelegate {
                               shouldChangeCharactersIn range: NSRange,
                               replacementString string: String) -> Bool {
         if let notNilPrefix = textField.formatter.prefix {
-            if range.location < notNilPrefix.characters.count {
+            if range.location < notNilPrefix.count {
                 return false
             }
         }

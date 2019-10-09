@@ -166,7 +166,7 @@ public final class SHSPhoneNumberFormatter: Formatter {
      Removes required number of digits in the phone text.
      */
     public class func formattedRemove(string: String, atIndex range: NSRange) -> String {
-        var newString = string
+        let newString = string
         var removeCount = valuableCharCount(in: (newString as NSString).substring(with: range))
         if range.length == 1 { removeCount = 1 }
 
